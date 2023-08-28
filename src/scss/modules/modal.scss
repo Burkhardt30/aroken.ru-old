@@ -1,0 +1,112 @@
+.modal {
+    --transition-time: 0.3s;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 15px;
+    cursor: pointer;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity var(--transition-time), visibility var(--transition-time);
+
+    &__container {
+        position: relative;
+        max-width: 800px;
+        margin: 50px auto;
+        display: none;
+        vertical-align: middle;
+        background-color: #fff;
+        border-radius: 20px;
+        cursor: default;
+        text-align: left;
+
+        &.modal-open {
+            display: inline-block;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+
+        width: 50px;
+        height: 50px;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 3px;
+            width: 20px;
+            border-radius: 3px;
+            background: $general-text-color;
+        }
+
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    &__content {
+        padding: 50px 15px 20px;
+    }
+
+    &--is-open {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity var(--transition-time), visibility var(--transition-time);
+    }
+}
+
+.disable-scroll {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+/* Транзы ============================================================= */
+
+.fade {
+    opacity: 0;
+    transition: opacity var(--transition-time);
+}
+
+.fade.animate-open {
+    opacity: 1;
+    transition: opacity var(--transition-time);
+}
+
+.fadeInUp {
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: opacity var(--transition-time), transform var(--transition-time);
+}
+
+.fadeInUp.animate-open {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity var(--transition-time), transform var(--transition-time);
+}

@@ -1,0 +1,1072 @@
+@import "reset";
+@import "fonts";
+@import "iconfont";
+@import "vars";
+@import "libs";
+@import "global";
+
+.hero {
+    position: relative;
+    z-index: 2;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+
+        position: relative;
+    }
+
+    &__body {
+        width: 100%;
+        max-width: 510px;
+        padding-top: 50px;
+        margin-right: 50px;
+        @include adaptiveValue("margin-right", 50, 15, 500);
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 40, 30);
+
+        .z-layers,
+        .z-layer {
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                background: url("@img/decor/fire.png") 0 0 / 100% no-repeat;
+            }
+        }
+
+        transition-delay: .4s;
+
+        ._active & {
+            transition-delay: 0s;
+        }
+    }
+
+    &__text {
+        border-left: 3px solid $light-text-color;
+        padding-left: 30px;
+        color: $light-text-color;
+        @include adaptiveValue("margin-bottom", 50, 20);
+
+        transition-delay: .3s;
+
+        ._active & {
+            transition-delay: .1s;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        margin-bottom: 50px;
+
+        transition-delay: .2s;
+
+        ._active & {
+            transition-delay: .2s;
+        }
+    }
+
+    &__accent-text {
+        color: $accent-color;
+        display: flex;
+        text-shadow: 0px 0px 10px $accent-color;
+
+        transition-delay: .1s;
+
+        ._active & {
+            transition-delay: .3s;
+        }
+
+        &::before {
+            content: '';
+            flex: 0 0 auto;
+            margin-right: 30px;
+            width: 50px;
+            height: 50px;
+            background: url("@img/decor/smile.svg") 0 0 / 100% no-repeat;
+        }
+
+        &--mobile {
+            display: none;
+        }
+    }
+
+    &__image {
+        overflow: hidden;
+        border-radius: 45px;
+        @include adaptiveValue("max-width", 395, 210, 700);
+
+        transition-delay: 0s;
+
+        ._active & {
+            transition-delay: .4s;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__decor {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: -17%;
+        bottom: 0;
+        z-index: -1;
+
+        filter: blur(1px);
+        pointer-events: none;
+        background: url("@img/decor/shape-triangle.png") 3% 39% / 25px no-repeat,
+            url("@img/decor/shape-circle.png") 92% 54% / 25px no-repeat,
+            url("@img/decor/shape-cross.png") 88% 12% / 17px no-repeat;
+
+        opacity: 0;
+        transition: opacity .8s .8s;
+
+        &._active {
+            opacity: 1;
+        }
+    }
+}
+
+.start {
+    position: relative;
+    z-index: 1;
+
+    &__wrapper {
+        padding: 200px 0 100px;
+        background: $section-bg;
+        border-radius: 20px;
+
+        position: relative;
+    }
+
+    &__inner {}
+
+    &__heading {}
+
+    &__list {
+        display: flex;
+        margin: -20px -12px;
+    }
+
+    &__item {
+        padding: 20px 12px;
+        flex: 0 0 25%;
+
+        @for $var from 1 to (4 + 1) {
+            $delay: ($var - 1) * .2;
+            $delayBack: ((4 + 1) - $var) * .2;
+
+            &:nth-child(#{$var})._active .start__item-inner {
+                transition-delay: #{$delay + s};
+            }
+
+            &:nth-child(#{$var}) .start__item-inner {
+                transition-delay: #{$delayBack + s};
+            }
+        }
+    }
+
+    &__item-head {
+        margin-bottom: 40px;
+
+        display: flex;
+        align-items: flex-start;
+
+        position: relative;
+        z-index: 1;
+
+        span {
+            padding: 0 15px;
+            font-size: 11px;
+            display: block;
+            border-radius: 50px;
+            background: $accent-color;
+            white-space: nowrap;
+        }
+    }
+
+    &__item-icon {
+        font-size: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 82px;
+        height: 82px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: $accent-color;
+        margin-right: 20px;
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #474950;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    }
+
+    &__item-title {
+        @extend %m-700;
+        @include adaptiveValue("font-size", 22, 17);
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    &__item-text {}
+
+    &__backlight {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 0;
+        height: 200%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: url("@img/decor/backlight.webp") 50% 100% / contain no-repeat;
+        }
+
+        &::before {
+            top: 0;
+            bottom: 50%;
+        }
+
+        &::after {
+            top: 50%;
+            bottom: 0;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.community {
+    position: relative;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        position: relative;
+    }
+
+    &__image-wrapper {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 0;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            @include adaptiveValue(width, 350, 250);
+            @include adaptiveValue(height, 350, 250);
+            border-radius: 50%;
+            background: #ffffff0f;
+        }
+    }
+
+    &__image {
+        overflow: hidden;
+        border-radius: 45px;
+        min-width: 200px;
+        max-width: 400px;
+
+        transition-duration: 1.2s;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__body-wrapper {
+        flex: 0 0 50%;
+        padding-left: 30px;
+
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__body {
+        max-width: 485px;
+    }
+
+    &__heading {
+        margin-bottom: 30px;
+    }
+
+    &__text {
+        margin-bottom: 40px;
+        overflow: hidden;
+    }
+
+    &__decor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+
+        filter: blur(1px);
+        pointer-events: none;
+        background: url("@img/decor/shape-triangle.png") 4% 65% / 25px no-repeat,
+            url("@img/decor/shape-circle.png") 81% 86% / 25px no-repeat,
+            url("@img/decor/shape-cross.png") 63% 7% / 17px no-repeat;
+
+        opacity: 0;
+        transition: opacity .8s .8s;
+
+        &._active {
+            opacity: 1;
+        }
+    }
+}
+
+.side-section {
+    &__wrapper {
+        @include adaptiveValue("padding-top", 80, 40);
+        @include adaptiveValue("padding-bottom", 80, 40);
+        position: relative;
+        z-index: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: -1000px;
+            z-index: -1;
+            background: $section-bg url('@img/decor/backlight-2.webp') -1% 0 no-repeat;
+            border-radius: 20px;
+
+            transform: translateX(50vw);
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        ._active &::before {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 1.2s;
+        }
+    }
+
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+        align-items: center;
+        @include adaptiveValue(grid-column-gap, 80, 20, 700);
+    }
+
+    &__video {
+        grid-row: span 2;
+        border-radius: 20px;
+        overflow: hidden;
+        padding-bottom: 57%;
+        position: relative;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        transform: translateX(40vw);
+        opacity: 0;
+        transition: all .3s 0s;
+
+        ._active & {
+            opacity: 1;
+            transform: translateX(0%);
+            transition: all 1.2s .2s, opacity 3s .2s;
+        }
+    }
+
+    .heading {
+        &__subtitle {
+            transform: translateX(30vw);
+            opacity: 0;
+            transition: all .3s 0s;
+        }
+    }
+
+    &._active {
+        .heading {
+            &__subtitle {
+                opacity: 1;
+                transform: translateX(0%);
+                transition: all 1s .5s;
+            }
+        }
+    }
+
+    .heading {
+        &__title {
+            transform: translateX(30vw);
+            opacity: 0;
+            transition: all .3s 0s;
+        }
+    }
+
+    &._active {
+        .heading {
+            &__title {
+                opacity: 1;
+                transform: translateX(0%);
+                transition: all 1s .4s;
+            }
+        }
+    }
+
+    &__text {
+
+        transform: translateX(30vw);
+        opacity: 0;
+        transition: all .3s 0s;
+
+        ._active & {
+            opacity: 1;
+            transform: translateX(0%);
+            transition: all 1s .3s;
+        }
+    }
+}
+
+.features {
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &__body {
+        flex: 0 0 50%;
+        max-width: calc((#{$container + px} - 30px) / 2);
+        padding-right: 10px;
+    }
+
+    &__heading {}
+
+    &__list {}
+
+    &__item {
+        margin-bottom: 30px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__item-inner {
+        display: flex;
+
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 auto;
+            @include adaptiveValue("width", 33, 27);
+            @include adaptiveValue("height", 33, 27);
+            border-radius: 50%;
+            background: $accent-color;
+            margin-right: 22px;
+
+            &::before {
+                // font-size: 12px;
+            }
+        }
+    }
+
+    &__item-content {}
+
+    &__item-title {
+        @extend %m-700;
+        @include adaptiveValue("font-size", 22, 17);
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    &__item-text {
+        color: $gray-text-color;
+    }
+
+    &__images {
+        flex: 0 0 50%;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+        grid-column-gap: 30px;
+
+        padding-left: 10px;
+
+    }
+
+    &__image-box {
+
+        transition-duration: 2s;
+
+        &:first-child {
+            @include adaptiveValue(padding-bottom, 100, 200, 1000);
+        }
+
+        &:last-child {
+            @include adaptiveValue(padding-top, 100, 200, 1000);
+        }
+    }
+
+    &__image {
+        overflow: hidden;
+        border-radius: 7px;
+        box-shadow: 0px 5px 15px 0px #2766ae54;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+.testimonials {
+    &__inner {}
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        @include adaptiveValue(margin-bottom, 50, 20);
+    }
+
+    &__heading {
+        margin-bottom: 0;
+    }
+
+    &__arrows {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    &__arrow {
+        color: inherit;
+
+        font-size: 12px;
+        width: 39px;
+        height: 39px;
+        background: $dark-text-color;
+        border-radius: 7px;
+
+        position: relative;
+
+        margin-right: 10px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        transition: all .3s;
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            background: $accent-color;
+        }
+
+        &:first-child {
+            &::before {
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+        }
+    }
+
+    &__arrow--prev {}
+
+    &__arrow--next {}
+
+    &__slider {
+        overflow: hidden;
+        margin-bottom: 50px;
+    }
+
+    &__slide {
+        overflow: hidden;
+        border-radius: 35px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__button {}
+}
+
+.options {
+    &__inner {}
+
+    &__heading {}
+
+    &__body {
+        display: flex;
+        @include adaptiveValue(margin-left, -20, -7.5, 700);
+        @include adaptiveValue(margin-right, -20, -7.5, 700);
+    }
+
+    &__item {
+        @include adaptiveValue(padding-left, 20, 7.5, 700);
+        @include adaptiveValue(padding-right, 20, 7.5, 700);
+        flex: 0 0 50%;
+    }
+
+    &__card {
+        height: 100%;
+    }
+}
+
+.options-card {
+    @include adaptiveValue("font-size", 17, 14, 700);
+
+    padding-top: 75px;
+    @include adaptiveValue(padding-left, 50, 15, 700);
+    @include adaptiveValue(padding-right, 50, 15, 700);
+    padding-bottom: 50px;
+
+    position: relative;
+    background: $section-bg;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $section-bg;
+
+    &__quantity {
+        @extend %m-700;
+        @include adaptiveValue("font-size", 13, 11, 700);
+        letter-spacing: 1.5px;
+
+        background: $accent-color;
+        border-radius: 50px;
+        padding: 4px 15px;
+
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    &__title {
+        color: $accent-color;
+        @include adaptiveValue("font-size", 15, 12, 700);
+        letter-spacing: 7.5px;
+        @extend %m-700;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        line-height: 1.2;
+
+        transition-delay: .13s;
+
+        ._active & {
+            transition-delay: 0s;
+        }
+    }
+
+    &__price {
+        @extend %m-700;
+        @include adaptiveValue("font-size", 20, 16, 700);
+        line-height: 1.2;
+        margin-bottom: 20px;
+        display: flex;
+
+        &>span {
+            @include adaptiveValue(margin-top, 20, 5, 700);
+        }
+
+        transition-delay: .12s;
+
+        ._active & {
+            transition-delay: .01s;
+        }
+    }
+
+    &__amount {
+        @extend %m-500;
+        @include adaptiveValue(margin-left, 20, 5, 700);
+
+        span {
+            display: block;
+            @include adaptiveValue("font-size", 65, 45, 700);
+        }
+    }
+
+    &__text {
+        color: $gray-text-color;
+        margin-bottom: 20px;
+
+        transition-delay: .11s;
+
+        ._active & {
+            transition-delay: .02s;
+        }
+    }
+
+    &__list {
+        flex-grow: 1;
+        margin-bottom: 20px;
+    }
+
+    &__item {
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &::before {
+            font-size: 0.8em;
+            margin-right: 5px;
+            color: $accent-color;
+        }
+
+        &--unavailable,
+        &--unavailable::before {
+            color: $gray-text-color;
+        }
+
+        @for $var from (1) to (10 + 1) {
+            $delay: (($var + 3) - 1) * .01;
+            $delayBack: ((10 + 1) - ($var + 3)) * .01;
+
+            &:nth-child(#{$var}) {
+                transition-delay: #{$delayBack + s};
+            }
+
+            ._active &:nth-child(#{$var}) {
+                transition-delay: #{$delay + s};
+            }
+        }
+
+    }
+
+    &__button {
+        align-self: flex-start;
+
+        transition-delay: 0s;
+
+        ._active & {
+            transition-delay: .13s;
+        }
+    }
+
+    &--simple {
+        background: transparent;
+        border: 1px solid $dark-text-color;
+    }
+}
+
+.installments {
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__img {
+        max-width: 910px;
+        border-radius: 45px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__body {
+        max-width: 530px;
+        margin-left: 30px;
+    }
+
+    &__text {
+        overflow: hidden;
+        margin-bottom: 17px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__options {
+        overflow: hidden;
+        @extend %m-700;
+        margin-bottom: 17px;
+    }
+
+    &__options-item {}
+}
+
+.faq {
+    &__inner {
+
+        padding-top: 50px;
+        @include adaptiveValue(padding-left, 50, 15);
+        @include adaptiveValue(padding-right, 50, 15);
+        padding-bottom: 50px;
+
+        background: $section-bg;
+        border-radius: 20px;
+    }
+
+    &__heading {}
+
+    &__accordion {}
+}
+
+.accordion {
+    &__item {
+        @for $var from 1 to (9 + 1) {
+            $delay: ($var - 1) * .1;
+            $delayBack: ((9 + 1) - $var) * .1;
+
+            ._active &:nth-child(#{$var}) {
+                transition-delay: #{$delay + s};
+            }
+
+            &:nth-child(#{$var}) {
+                transition-delay: #{$delayBack + s};
+            }
+        }
+
+        &--open {
+            .accordion__content {
+                padding: 20px 0;
+            }
+
+            .accordion__button {
+                span {
+                    &::after {
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+        }
+    }
+
+    &__button {
+        line-height: 1;
+        padding: 15px 0;
+        color: $accent-color;
+        @extend %m-700;
+
+        display: flex;
+
+        transition: all .3s;
+
+        span {
+            flex-shrink: 0;
+            display: block;
+            width: 17px;
+            height: 17px;
+            margin-right: 10px;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: '';
+                display: block;
+
+                background: $accent-color;
+                border-radius: 1px;
+                width: 17px;
+                height: 3px;
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            &::before {}
+
+            &::after {
+                transition: all .3s;
+                transform: translate(-50%, -50%) rotate(90deg);
+            }
+        }
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+
+    &__content {
+        overflow: hidden;
+        max-height: 0;
+        padding: 0;
+        transition: all .3s;
+        box-sizing: content-box;
+        will-change: max-height;
+    }
+}
+
+
+.privacy {
+    color: $gray-text-color;
+    padding-bottom: 80px;
+    @include adaptiveValue("padding-top", 80, 0);
+
+    h1 {
+        @include adaptiveValue("font-size", 70, 22);
+        @include adaptiveValue("margin-bottom", 100, 30);
+        color: $general-text-color;
+    }
+
+    h2 {
+        color: $general-text-color;
+        @extend %m-700;
+        @include adaptiveValue("font-size", 20, 16);
+        line-height: 1.4;
+        margin-bottom: 25px;
+    }
+
+    h3 {
+        @extend %m-700;
+        @include adaptiveValue("font-size", 18, 15);
+        line-height: 140%;
+        display: inline;
+        margin-bottom: 30px;
+        color: $accent-color;
+    }
+
+    h4 {
+        display: inline;
+        margin-bottom: 20px;
+    }
+
+    ol {
+        // color: $light-text;
+        list-style: none;
+        counter-reset: li;
+        list-style-position: inside;
+
+        &>li {
+            &:before {
+                counter-increment: li;
+                content: counters(li, ".") ". ";
+            }
+        }
+    }
+
+    li {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    ul {
+        padding-left: 27px;
+
+        li::before {
+            content: "–";
+        }
+    }
+
+    dl {
+        padding-left: 27px;
+    }
+
+    .privacy__item {
+        margin-bottom: 40px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &::before {
+            @extend %m-700;
+            @include adaptiveValue("font-size", 18, 15);
+            line-height: 140%;
+            color: $accent-color;
+        }
+
+        &>ol,
+        ul,
+        ol,
+        dl {
+            margin-top: 20px;
+        }
+    }
+
+    p {
+        display: inline;
+    }
+
+    .privacy__p {
+        display: block;
+        margin: 20px 0;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    dt,
+    dd {
+        display: inline;
+    }
+
+    &__termin {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__info {
+        padding-top: 40px;
+    }
+
+    &__info-title {
+        display: block;
+    }
+}
+
+@import "media";

@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'icons';
+    src:
+        url('../iconfonts/icons.ttf?ahr5wm') format('truetype'),
+        url('../iconfonts/icons.woff?ahr5wm') format('woff'),
+        url('../iconfonts/icons.svg?ahr5wm#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="_icon-"]::before,
+[class*=" _icon-"]::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icons' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+._icon-exclamation:before {
+    content: "\e90c";
+}
+
+._icon-window:before {
+    content: "\e90b";
+}
+
+._icon-circle-tg:before {
+    content: "\e900";
+}
+
+._icon-check:before {
+    content: "\e901";
+}
+
+._icon-clock:before {
+    content: "\e902";
+}
+
+._icon-discord:before {
+    content: "\e903";
+}
+
+._icon-laptop:before {
+    content: "\e904";
+}
+
+._icon-mail:before {
+    content: "\e905";
+}
+
+._icon-teacher:before {
+    content: "\e906";
+}
+
+._icon-tg:before {
+    content: "\e907";
+}
+
+._icon-yt:before {
+    content: "\e908";
+}
+
+._icon-arrow-right:before {
+    content: "\e909";
+}
+
+._icon-battery:before {
+    content: "\e90a";
+}

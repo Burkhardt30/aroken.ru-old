@@ -1,0 +1,87 @@
+// Цвета ===========================================================================================
+$general-bg: #16171b;
+$section-bg: #212227;
+$general-text-color: #fff;
+$light-text-color: #abb0bf;
+$gray-text-color: #656871;
+$dark-text-color: #26272e;
+$accent-color: #2766ae;
+$red-color: #b81c23;
+
+// Значения ===========================================================================================
+
+$container: 1170;
+
+// Шрифты ===========================================================================================
+
+%m-700 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+}
+%m-500 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+%m-400 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+}
+
+// Чекбоксы ===========================================================================================
+
+%checkbox-hidden {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    position: absolute;
+}
+
+// Адаптивные свойства ===========================================================================================
+
+$maxWidth: 1920;
+
+@mixin adaptiveValue($property, $startSize, $endSize, $endWidth: 320, $type: 1) {
+    $addSize: $startSize - $endSize;
+
+    @if $type==1 {
+        #{$property}: $startSize + px;
+
+        @media (max-width: #{$container + px}) {
+            #{$property}: calc(#{$endSize + px} + #{$addSize} * ((100vw - #{$endWidth + px}) / #{$container - $endWidth}));
+        }
+
+        @media (max-width: #{$endWidth + px}) {
+            #{$property}: #{$endSize + px};
+        }
+    }
+
+    @else if $type==2 {
+        #{$property}: $startSize + px;
+
+        @media (min-width: #{$container + px}) {
+            #{$property}: calc(#{$endSize + px} + #{$addSize} * ((100vw - #{$endWidth + px}) / #{$maxWidth - $endWidth}));
+        }
+    }
+
+    @else {
+        #{$property}: calc(#{$endSize + px} + #{$addSize} * ((100vw - #{$endWidth + px}) / #{$maxWidth - $endWidth}));
+    }
+}
+
+// @include adaptiveValue(width, 100, 10);
+
+// width: 35px;
+// @media (max-width: 1170px) {
+//     width: calc(10px + (35 - 10) * ((100vw - 320px) / (1170 - 320)));
+// }
+
+@mixin oneByOne($num, $s) {
+    @for $var from 1 to ($num + 1) {
+        $delay: ($var - 1) * $s;
+
+        &:nth-child(#{$var}) {
+            transition-delay: #{$delay + s};
+        }
+    }
+}

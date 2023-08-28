@@ -1,0 +1,195 @@
+<div class="modal">
+    <div class="modal__container" data-target="first">
+        <a class="modal__close" href="#"></a>
+        <div class="modal__content">
+            <section class="popup">
+                <div class="popup__heading heading heading--text-center" data-animate>
+                    <div class="heading__subtitle _anim">
+                        Ещё чуть-чуть
+                    </div>
+                    <h2 class="heading__title _anim">
+                        Регистрация на Премиум
+                    </h2>
+                </div>
+                <form class="popup__coupon" name="coupon">
+                    <div class="popup__coupon-heading _icon-window">
+                        <p>Есть купон? <a href="#">Нажмите, чтобы ввести код</a></p>
+                    </div>
+                    <div class="popup__coupon-err _icon-exclamation">
+                        <p>Купона «<span></span>» не существует!</p>
+                    </div>
+                    <div class="popup__coupon-body">
+                        <div class="popup__coupon-body-inner">
+                            <p class="popup__coupon-text">
+                                Если у вас есть код купона, укажите его ниже.
+                            </p>
+                            <div class="popup__coupon-controls">
+                                <input class="popup__input" type="text" placeholder="Код купона" required>
+                                <button class="popup__button button button--blue" type="submit">
+                                    Применить купон
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="popup__form" name="order">
+                    <fieldset class="popup__field">
+                        <legend class="popup__legend">
+                            <h3 class="popup__subtitle">
+                                Ваши данные
+                            </h3>
+                        </legend>
+                        <div class="popup__data">
+                            <label class="popup__label">
+                                <div class="popup__label-name">
+                                    Имя <span>*</span>
+                                </div>
+                                <input class="popup__input" type="text" placeholder="Как тебя зовут?" required>
+                            </label>
+                            <label class="popup__label">
+                                <div class="popup__label-name">
+                                    Фамилия <span>*</span>
+                                </div>
+                                <input class="popup__input" type="text" placeholder="А фамилия?" required>
+                            </label>
+                            <label class="popup__label popup__label--wide">
+                                <div class="popup__label-name">
+                                    Email <span>*</span>
+                                </div>
+                                <input class="popup__input" type="email" placeholder="На почту придут доступы" required>
+                            </label>
+                            <label class="popup__label popup__label--wide">
+                                <div class="popup__label-name">
+                                    Мессенджер <span>*</span>
+                                </div>
+                                <div class="popup__messager">
+                                    <select class="popup__select"></select>
+                                    <input class="popup__input" name="selectedMessager" type="text" placeholder=""
+                                        required>
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="popup__field">
+                        <legend class="popup__legend">
+                            <h3 class="popup__subtitle">
+                                Детали оплаты
+                            </h3>
+                        </legend>
+                        <div class="popup__way popup__way--selected">
+                            <label class="popup__way-label">
+                                <input class="popup__way-default" type="radio" name="way" checked>
+                                <span class="popup__way-radio"></span>
+                                <div class="popup__way-name">
+                                    <p>Оплата картой онлайн</p>
+                                    <div class="popup__way-name-images">
+                                        <img src="@img/content/logos/mir.svg" alt="Мир">
+                                        <img src="@img/content/logos/visa.svg" alt="Виза">
+                                        <img src="@img/content/logos/mastercard.svg" alt="Мастеркард">
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="popup__way-dropdown">
+                                <div class="popup__dropdown-inner">
+                                    <p class="popup__way-text">
+                                        Безналичная оплата картой любого банка РФ Visa, Mastercard, МИР
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup__way">
+                            <label class="popup__way-label">
+                                <input class="popup__way-default popup__way-default--tinkoff" type="radio" name="way">
+                                <span class="popup__way-radio"></span>
+                                <p class="popup__way-name">
+                                    Рассрочка от Тинькофф (Основной вариант)
+                                </p>
+                            </label>
+                            <div class="popup__way-dropdown">
+                                <div class="popup__dropdown-inner">
+                                    <p class="popup__way-text">
+                                        Отправить заявку на получение рассрочки.
+                                    </p>
+                                    <fieldset class="popup__way-periods">
+                                        <label class="popup__way-label">
+                                            <input class="popup__way-default" type="radio" name="period" checked>
+                                            <span class="popup__way-radio"></span>
+                                            Рассрочка 0-0-3 (Скидка 5.19%)
+                                        </label>
+                                        <label class="popup__way-label">
+                                            <input class="popup__way-default" type="radio" name="period">
+                                            <span class="popup__way-radio"></span>
+                                            Рассрочка 0-0-4 (Скидка 6.43%)
+                                        </label>
+                                        <label class="popup__way-label">
+                                            <input class="popup__way-default" type="radio" name="period">
+                                            <span class="popup__way-radio"></span>
+                                            Рассрочка 0-0-6 (Скидка 8.84%)
+                                        </label>
+                                        <label class="popup__way-label">
+                                            <input class="popup__way-default" type="radio" name="period">
+                                            <span class="popup__way-radio"></span>
+                                            Рассрочка 0-0-10 (Скидка 13.42%)
+                                        </label>
+                                        <label class="popup__way-label">
+                                            <input class="popup__way-default" type="radio" name="period">
+                                            <span class="popup__way-radio"></span>
+                                            Рассрочка 0-0-12 (Скидка 15.59%)
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup__way">
+                            <label class="popup__way-label">
+                                <input class="popup__way-default" type="radio" name="way">
+                                <span class="popup__way-radio"></span>
+                                <p class="popup__way-name">
+                                    Рассрочки от других банков (Альтернативный метод)
+                                </p>
+                            </label>
+                            <div class="popup__way-dropdown">
+                                <div class="popup__dropdown-inner">
+                                    <p class="popup__way-text">
+                                        Заполнить форму для множества банков, а наш брокер подберет варианты.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <section class="popup__order">
+                        <h3 class="popup__subtitle">
+                            Ваш заказ
+                        </h3>
+                        <div class="popup__total">
+                            <div class="popup__total-col popup__total-col--service">
+                                Премиум
+                            </div>
+                            <div class="popup__total-col popup__total-col--installments">
+                                4499₽ в месяц
+                            </div>
+                            <div class="popup__total-col popup__total-col--price">
+                                53990,00₽
+                            </div>
+                        </div>
+                        <p class="popup__order-text">
+                            Ваши личные данные будут использоваться для обработки ваших заказов, упрощения вашей
+                            работы с сайтом и для других целей, описанных в нашей <a href="/privacy.html" target="_blank">политика
+                                конфиденциальности</a>.
+                        </p>
+                        <label class="popup__terms">
+                            <input class="popup__terms-default" type="checkbox" required>
+                            <span class="popup__terms-checkbox"></span>
+                            <p class="popup__terms-text">
+                                Я прочитал(а) и принимаю <a href="/privacy.html" target="_blank">правила и условия</a> сайта <span>*</span>
+                            </p>
+                        </label>
+                        <button class="popup__order-button button button--accent" type="submit">
+                            Подтвердить заказ
+                        </button>
+                    </section>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
